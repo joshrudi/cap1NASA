@@ -1,0 +1,88 @@
+<!-- Joshua Rudaitis -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">         <!--  My CSS sheet -->
+    <link rel="stylesheet" href="assets/nasawds-2.0.7/css/nasawds.min.css">   <!-- NASA Web Design System -->
+  </head>
+  <body ng-app="directoryApp" ng-controller="ListingsController">
+      <div id="topBar">
+
+        <div class="col-md-6">
+          <div class="usa-grid | search">
+            <div class="usa-width-one-half">
+              <div role="search">
+                <form class="usa-search usa-search-big">
+                  <input id="search-field-big" type="search" name="search" ng-model="query">
+                  <button type="submit" ng-click="search()">
+                    <span class="usa-search-submit-text">Search</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-4">
+          <span> 
+            <img src="nasa.png" align="right" class="logo"/> <p align="right" class="title"> NASA Image Directory </p>
+          </span>
+        </div>
+
+      </div>
+      <br><br><br><br><br>
+
+      <div>
+        
+        <div class="col-md-4"></div>
+
+        <div class="col-md-2">
+          <button class="usa-button-secondary-inverse" ng-click="getPrev()">Prev</button>
+        </div>
+
+        <div class="col-md-6">
+          <button class="usa-button-secondary-inverse" ng-click="getNext()">Next</button>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-10">
+          <div class="tableWrapper">
+            <table class="table">
+              
+                <tbody ng-repeat="listing in listings">
+                  <tr>
+
+                    <td>
+                      <div class="col-md-4">
+                        <img src="{{listing.links[0].href}}" ng-click="showDetails(listing)" class="thumbnail">
+                      </div>
+                      <div class="col-md-6">
+                        <b>{{listing.data[0].title}}</b>
+                        <div>{{listing.data[0].description}}</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="listingController.js"></script>
+    <script src="listingFactory.js"></script>
+    <script src="assets/nasawds-2.0.7/js/nasawds.min.js"></script> <!-- NASA Web Design System -->
+  </body>
+</html>
