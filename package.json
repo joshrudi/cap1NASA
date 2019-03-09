@@ -2,7 +2,7 @@
   "name": "cap1nasa",
   "version": "1.0.0",
   "description": "Webapp designed to search nasa image library using nasa api",
-  "main": "server.js",
+  "main": "node server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/joshrudi/cap1NASA/issues"
   },
-  "homepage": "https://github.com/joshrudi/cap1NASA#readme"
+  "homepage": "https://github.com/joshrudi/cap1NASA#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
