@@ -58,18 +58,50 @@
           <div class="grid">
             <div class="grid-sizer"></div>
               <div ng-repeat="listing in listings">
-                <div class="card grid-item">
-                  <img src="{{listing.links[0].href}}" style="width:100%">
+                <div class="card grid-item" data-toggle="modal" href="#myModal">
+                  <img class="imgCard" src="{{listing.links[0].href}}" style="width:100%">
                   <div class="card-container">
                     <p class="ovf"><b>{{listing.data[0].title}}</b></p> 
                     <p class="ovf">{{listing.data[0].nasa_id}}</p> 
                   </div>
                 </div>
+
+                <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                 <p id="myModalLabel" class="modal-title popup">{{listing.data[0].title}}</p>
+
+                            </div>
+                            <div class="modal-body">
+                              <img src="{{listing.links[0].href}}" class="imgCurve">
+                              <p class="popup"><b>Date:         </b>{{listing.data[0].date_created}}</p> 
+                              <p class="popup"><b>Center:       </b>{{listing.data[0].center}}</p> 
+                              <p class="popup"><b>Photographer: </b>{{listing.data[0].photographer}}</p> 
+                              <p class="popup"><b>Location:     </b>{{listing.data[0].location}}</p> 
+                              <p class="popup"><b>Media Type:   </b>{{listing.data[0].media_type}}</p> 
+                              <p class="popup"><b>NASA ID:      </b>{{listing.data[0].nasa_id}}</p> 
+                              <p class="popup"><b>Photographer: </b>{{listing.data[0].photographer}}</p> 
+                              <p class="popup"><b>Description:  </b>{{listing.data[0].description}}</p> 
+                              <p class="popup"><b>Keywords:     </b></p> 
+                                <div ng-repeat="keyword in listing.data[0].keywords">
+                                    <span class="usa-label ">{{keyword}}</span>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
               </div>
           </div>
         </div>
       </div>
-    </div>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>

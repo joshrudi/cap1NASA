@@ -1,7 +1,19 @@
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings', 
   function($scope, Listings) {
 
-    $scope.listings = [];
+    $scope.listings = [];   //contains search results of current page
+    $scope.nav = [];        //contains next and/or prev page links
+    $scope.file = [];       //contains the links to a given items files (.mp4/.png/etc...)
+
+    /* loads listings with a default view so visitors have something to see by default */
+    /* search using query, then bind to scope */
+      Listings.search("earth").then(function(response) {
+        $scope.listings = response.data.collection.items;
+        $scope.nav = response.data.collection.links;
+        console.log($scope.listings);
+      }, function(error) {
+        console.log('Unable to retrieve listings:', error);
+      });
 
     $scope.search = function() {
       
@@ -9,7 +21,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       Listings.search($scope.query).then(function(response) {
         $scope.listings = response.data.collection.items;
         $scope.nav = response.data.collection.links;
-        console.log($scope.nav);
+        console.log($scope.listings);
       }, function(error) {
         console.log('Unable to retrieve listings:', error);
       });
@@ -58,6 +70,11 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
           console.log('Unable to retrieve listings:', error);
         });
       }
+    }
+
+    $scope.getFile = function(type, url) {
+
+
     }
   }
 ]);
