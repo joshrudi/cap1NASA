@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/joshrudi/cap1NASA#readme",
   "dependencies": {
+    "@material/card": "^1.0.0",
     "express": "^4.16.4"
   }
 }

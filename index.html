@@ -54,28 +54,21 @@
 
         <div class="col-md-2"></div>
 
-        <div class="col-md-10">
-          <div class="tableWrapper">
-            <table class="table">
-              
-                <tbody ng-repeat="listing in listings">
-                  <tr>
-
-                    <td>
-                      <div class="col-md-4">
-                        <img src="{{listing.links[0].href}}" ng-click="showDetails(listing)" class="thumbnail">
-                      </div>
-                      <div class="col-md-6">
-                        <b>{{listing.data[0].title}}</b>
-                        <div>{{listing.data[0].description}}</div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
+        <div class="col-md-8">
+          <div class="grid">
+            <div class="grid-sizer"></div>
+              <div ng-repeat="listing in listings">
+                <div class="card grid-item">
+                  <img src="{{listing.links[0].href}}" style="width:100%">
+                  <div class="card-container">
+                    <p class="ovf"><b>{{listing.data[0].title}}</b></p> 
+                    <p class="ovf">{{listing.data[0].nasa_id}}</p> 
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
-
+      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
