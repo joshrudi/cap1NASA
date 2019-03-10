@@ -58,7 +58,8 @@
           <div class="grid">
             <div class="grid-sizer"></div>
               <div ng-repeat="listing in listings">
-                <div class="card grid-item" data-toggle="modal" href="#myModal">
+
+                <div class="card grid-item" data-toggle="modal" data-target="#dataPopup{{$index}}">
                   <img class="imgCard" src="{{listing.links[0].href}}" style="width:100%">
                   <div class="card-container">
                     <p class="ovf"><b>{{listing.data[0].title}}</b></p> 
@@ -66,7 +67,7 @@
                   </div>
                 </div>
 
-                <div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade in" id="dataPopup{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
