@@ -60,6 +60,11 @@ p.title {
   vertical-align: middle;
 }
 
+a {
+  color: white !important;
+  font-family: "Helvetica", "Sans Serif", sans-serif;
+}
+
 body {
   background-image: linear-gradient(to bottom right, rgba(38,40,48,1), rgba(38,40,48,1)), url(texture.png);
   background-position: center; 
@@ -157,11 +162,9 @@ html { overflow-y: scroll; }
 
 
 
-usa-nav-container.custom::after {
 
-  color: black;
-  background-color: black;
-}
+
+
 
 
 

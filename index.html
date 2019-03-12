@@ -63,19 +63,97 @@
       <header class="usa-header usa-header-basic topBar noGreyBar" role="banner">
             <div class="usa-nav-container">
               <div class="usa-navbar">
+
             <div class="usa-logo" id="basic-logo">
-              <em class="usa-logo-text" align="right">
-                <p class="title"> NASA Image Library </p>
-                  <a href="./index.html" title="Home" aria-label="Home">
-                    <img src="nasa.png" class="logo"/>
-                  </a>
+              <em class="usa-logo-text">
+                <a href="javascript:void(0)"
+                  title="Home"
+                  aria-label="Home">
+                  NASA Media Library
+                </a>
               </em>
             </div>
             <button class="usa-menu-btn">Filters</button>
           </div>
 
           <nav role="navigation" class="usa-nav" style="background-color: #323a45">
+
+              <button class="usa-nav-close">
+                <span style="color: red;" class="glyphicon glyphicon-remove"></span>
+              </button>
+
+              <ul class="usa-nav-primary usa-accordion"><li>
+
+                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-one">
+                    <span><p class="title">Date</p></span>
+                  </button>
+
+                  <ul id="basic-nav-section-one" class="usa-nav-submenu" style="padding: 15px"><li>
+                    <form>
+                      <p class="title">Start Year:</p>
+                      <input type="number" min="1920" max="2099" step="1" value="2019" ng-model="startDate"/>
+                      <p class="title">End Year:</p>
+                      <input type="number" min="1920" max="2099" step="1" value="2019" ng-model="endDate"/>
+                    </form>
+                  </ul></li><li>
+
+                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-two">
+                    <span><p class="title">Media</p></span>
+                  </button>
+
+                  <ul id="basic-nav-section-two" class="usa-nav-submenu" style="padding: 15px"><li>
+                          
+                          <fieldset class="usa-fieldset-inputs usa-sans">
+                          <legend class="usa-sr-only">Media Type</legend>
+                          <ul class="usa-unstyled-list">
+                            <li>
+                              <input id="images" type="checkbox" name="mediaType" value="image" checked ng-model="isImage">
+                              <label for="images"><p class="title">Images</p></label>
+                            </li>
+                            <li>
+                              <input id="videos" type="checkbox" name="mediaType" value="video" checked ng-model="isVideo">
+                              <label for="videos"><p class="title">Video</p></label>
+                            </li>
+                            <li>
+                              <input id="audio" type="checkbox" name="mediaType" value="audio" checked ng-model="isAudio">
+                              <label for="audio"><p class="title">Audio</p></label>
+                            </li>
+                          </ul>
+                        </fieldset>
+
+                        </ul></li><li>
+                    
+                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-three">
+                    <span><p class="title">Location</p></span>
+                  </button>
+                  
+                  <ul id="basic-nav-section-three" class="usa-nav-submenu" style="padding: 15px"><li>
+                            
+                              <form>
+                                <label for="input-type-text"><p class="filter">Location</p></label>
+                                <input id="input-type-text" name="input-type-text" type="text" ng-model="location">
+                              </form>
+
+                            </ul></li><li><a class="usa-nav-link" href="javascript:void(0)">
+                  </a></li></ul>
+
+
+              <form class="usa-search usa-search-small" style="padding-top: 15px">
+               <div role="search">
+                  <form class="usa-search usa-search-small">
+                    <input id="search-field-big" type="search" name="search" ng-model="query">
+                    <button type="submit" ng-click="search()" class="search">
+                      <span class="usa-search-submit-text"></span>
+                    </button>
+                  </form>
+                </div> 
+              </form>
                 
+
+
+
+
+<!-- 
             <button class="usa-nav-close">
               <img src="/nasawds-site/assets/img/close.svg" alt="close">
             </button>
@@ -142,7 +220,10 @@
                       <span class="usa-search-submit-text">Search</span>
                     </button>
                   </form>
-                </div>
+                </div> 
+
+ -->
+             
                 
               </nav>
             </div>
