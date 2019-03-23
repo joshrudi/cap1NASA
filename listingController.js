@@ -6,6 +6,9 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.hits = [];       //contains the number of results
     $scope.curPage = 0;     //stores the current page
     $scope.curEndRange = 0; //stores the current end of the range
+    $scope.history = [];    //stores search history
+    // (below) updates history var if items exist
+    if (window.localStorage.getItem('nasaHistory') != null) $scope.history = window.localStorage.getItem('nasaHistory').split(0x00);
 
 
     /* loads listings with a default view so visitors have something to see by default */
@@ -22,6 +25,12 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       });
 
     $scope.search = function() {
+
+      // add to search history
+      $scope.history.push($scope.query);
+
+      // update localStorage history (separated by the null character)
+      window.localStorage.setItem('nasaHistory', $scope.history.join(0x00));
       
       /* search using query, then bind to scope */
       Listings.search($scope.query, $scope.startDate, $scope.endDate, $scope.isImage, $scope.isVideo, $scope.isAudio, $scope.location).then(function(response) {
@@ -36,6 +45,13 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         console.log('Unable to retrieve listings:', error);
       });
     };
+
+    $scope.clearHistory = function() {
+
+      // wipes search history
+      $scope.history = [];
+      window.localStorage.removeItem('nasaHistory');
+    }
 
     $scope.getPrev = function() {
 

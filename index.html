@@ -63,13 +63,14 @@
 
           
 
+      
       <header class="usa-header usa-header-basic topBar noGreyBar" role="banner">
             <div class="usa-nav-container">
               <div class="usa-navbar">
 
             <div class="usa-logo" id="basic-logo">
               <em class="usa-logo-text">
-                <a href="javascript:void(0)"
+                <a href="https://nasa-images-search.herokuapp.com/"
                   title="Home"
                   aria-label="Home">
                   NASA Media Library
@@ -124,34 +125,33 @@
                           </ul>
                         </fieldset>
 
-                        </ul></li><li>
+                  </ul></li><li>
                     
                   <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-three">
                     <span><p class="title">Location</p></span>
                   </button>
                   
-                  <ul id="basic-nav-section-three" class="usa-nav-submenu" style="padding: 15px"><li>
+                  <ul id="basic-nav-section-three" class="usa-nav-submenu" style="padding: 15px;"><li>
                             
                               <form>
                                 <label for="input-type-text"><p class="filter">Location</p></label>
                                 <input id="input-type-text" name="input-type-text" type="text" ng-model="location">
                               </form>
 
-                            </ul></li><li><a class="usa-nav-link" href="javascript:void(0)">
-                  </a></li></ul>
+                            </ul></li><li></li></ul>
 
+                  <a data-toggle="modal" data-target="#historyPopup" style="cursor: pointer; text-decoration: none;"> History </a>
 
               <form class="usa-search usa-search-small" style="padding-top: 15px">
                <div role="search">
-                  <form class="usa-search usa-search-small">
-                    <input id="search-field-big" type="search" name="search" ng-model="query">
+                  <form class="usa-search usa-search-small row">
+                    <input id="search-field-big" type="search" name="search" ng-model="query" placeholder="Search">
                     <button type="submit" ng-click="search()" class="search">
                       <span class="usa-search-submit-text"></span>
                     </button>
                   </form>
                 </div> 
               </form>
-                
 
 
 
@@ -236,11 +236,36 @@
 
       <br>
 
+      <div class="modal fade in" id="historyPopup" tabindex="-1" role="dialog" aria-labelledby="historyModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                       <p id="historyModalLabel" class="modal-title popup">Search History</p>
+
+                  </div>
+                  <div class="modal-body" ng-repeat="search in history">
+                    <p class="popup"><b>Search {{$index + 1}}: </b>{{search}}</p> 
+                  </div>
+
+                  <div class="modal-footer">
+                      
+                      <span>
+                        <button type="button" style="background-color: #dd361c" class="btn btn-primary" ng-click="clearHistory()">Clear History</button>
+                      </span>
+
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
       <div class="usa-grid">
 
         <div class="usa-width-one-whole">
           <div class="usa-width-one-third buttonRightLayout">
-            <button class="usa-button-secondary-inverse" ng-click="getPrev()">Prev</button>
+            <button style="margin-right: 0px;" class="usa-button-secondary-inverse" ng-click="getPrev()">Prev</button>
           </div>
           <div class="usa-width-one-third resultCenterLayout"> <p class="filter"> Results {{(curPage*100) + 1}} - {{curEndRange}} of {{hits}} </p> </div>
           <div class="usa-width-one-third buttonLeftLayout">
@@ -251,26 +276,29 @@
 
       <div class="usa-grid">
 
-        <div class="row">
+        <div class="grid-container">
 
             <div class="grid">
               <div class="grid-sizer"></div>
                 <div ng-repeat="listing in listings">
 
                   <div class="card grid-item" data-toggle="modal" data-target="#dataPopup{{$index}}">
-                    <img class="imgCard" src="{{listing.links[0].href}}" style="width:100%">
-                    <div class="card-container">
-                      <p class="ovf"><b>{{listing.data[0].title}}</b></p> 
-                      <p class="ovf">{{listing.data[0].nasa_id}}</p> 
-                    </div>
+                   
+                      <img class="imgCard" src="{{listing.links[0].href}}" style="width:100%">
+                      <div class="card-container">
+                        <p class="ovf"><b>{{listing.data[0].title}}</b></p> 
+                        <p class="ovf">{{listing.data[0].nasa_id}}</p>
+                      </div>
+                   
+                   
                   </div>
 
-                  <div class="modal fade in" id="dataPopup{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal fade in" id="dataPopup{{$index}}" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                           <div class="modal-content">
                               <div class="modal-header">
                                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                   <p id="myModalLabel" class="modal-title popup">{{listing.data[0].title}}</p>
+                                   <p id="dataModalLabel" class="modal-title popup">{{listing.data[0].title}}</p>
 
                               </div>
                               <div class="modal-body">
@@ -291,12 +319,12 @@
 
                               <div class="modal-footer">
                                   
-                                  <a>
+                                  <span>
                                     <button type="button" class="btn btn-primary" ng-click="getFile(listing.data[0].media_type,listing.href)">View Raw</button>
-                                  </a>
-
+                                  </span>
+                                  
                                   <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
-
+                                  
                               </div>
                           </div>
                       </div>
