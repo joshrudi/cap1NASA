@@ -64,8 +64,6 @@ html, body {
   background-image: linear-gradient(to bottom right, rgba(38,40,48,1), rgba(38,40,48,1)), url(texture.png);
   background-position: center; 
   font-family: Helvetica, Arial, sans-serif;
-  margin: 0;
-  height: 100%;
 }
 
 * { box-sizing: border-box; }
