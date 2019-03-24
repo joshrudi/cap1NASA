@@ -317,10 +317,26 @@
                                   </div>
                               </div>
 
+                              <div class="modal-footer" align="right">
+
+                                  <span>
+                                    <button type="button" class="btn btn-primary" ng-click="share('fb',listing.links[0].href,'','')" style="background-color: #3C5A99;">Share on Facebook</button>
+                                  </span>
+
+                                  <span>
+                                    <button type="button" class="btn btn-primary" ng-click="share('tw',listing.links[0].href,listing.data[0].title,listing.data[0].keywords)" style="background-color: #38A1F3;">Tweet this</button>
+                                  </span>
+
+                                  <span>
+                                    <button type="button" class="btn btn-primary" ng-click="share('em',listing.links[0].href,listing.data[0].title,listing.data[0].keywords)" style="background-color: #4aa564;">Send as Email</button>
+                                  </span>
+
+                              </div>
+
                               <div class="modal-footer">
                                   
                                   <span>
-                                    <button type="button" class="btn btn-primary" ng-click="getFile(listing.data[0].media_type,listing.href)">View Raw</button>
+                                    <button type="button" class="btn btn-primary" ng-click="getFile(listing.data[0].media_type,listing.href)" style="background-color: #046b99">View Raw</button>
                                   </span>
                                   
                                   <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>

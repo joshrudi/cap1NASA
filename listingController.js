@@ -53,6 +53,33 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       window.localStorage.removeItem('nasaHistory');
     }
 
+    $scope.share = function(type, link, title, tags) {
+
+      if (type === "fb") { // facebook
+
+        window.open("https://www.facebook.com/sharer.php?u=" + encodeURIComponent(link.trim())); // encode for URL
+      }
+
+      else if (type === "tw") {  // twitter
+
+        var hashTags = '';
+
+        for (var i = 0; i < tags.length; i++) {
+
+          if (i < tags.length-1) hashTags += tags[i] + ',';
+          else hashTags += tags[i];
+        }
+        window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent('https://nasa-images-search.herokuapp.com/'.trim()) + '&text=Check+out+' + encodeURIComponent(title.trim()) + '+from+NASA!&hashtags=' + hashTags); // encode for URL
+      }
+
+      else {  // email
+
+        window.open('mailto:' + '?subject=' + encodeURIComponent(title.trim()) + '&body=Check out this awesomeness from NASA! ' + encodeURIComponent(link.trim()));
+      }
+
+
+    }
+
     $scope.getPrev = function() {
 
       // if prev exists
