@@ -7,6 +7,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.curPage = 0;     //stores the current page
     $scope.curEndRange = 0; //stores the current end of the range
     $scope.history = [];    //stores search history
+
     // (below) updates history var if items exist
     if (window.localStorage.getItem('nasaHistory') != null) $scope.history = window.localStorage.getItem('nasaHistory').split(0x00);
 
@@ -64,17 +65,18 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
         var hashTags = '';
 
-        for (var i = 0; i < tags.length; i++) {
+        for (var i = 0; i < tags.length; i++) {  // iterate though keyworks and make them into a hashtag format that the twitter url understands (item1,item2,item3,etc...)
 
           if (i < tags.length-1) hashTags += tags[i] + ',';
           else hashTags += tags[i];
         }
+
         window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent('https://nasa-images-search.herokuapp.com/'.trim()) + '&text=Check+out+' + encodeURIComponent(title.trim()) + '+from+NASA!&hashtags=' + hashTags); // encode for URL
       }
 
       else {  // email
 
-        window.open('mailto:' + '?subject=' + encodeURIComponent(title.trim()) + '&body=Check out this awesomeness from NASA! ' + encodeURIComponent(link.trim()));
+        window.open('mailto:' + '?subject=' + encodeURIComponent(title.trim()) + '&body=Check out this awesomeness from NASA! ' + encodeURIComponent(link.trim()));  //encode for URL
       }
 
 
@@ -139,38 +141,35 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         /* search using url, then bind to scope */
         Listings.getLink(url).then(function(response) {
 
-          console.log(type);
-          console.log(response);
+          if (type === "image") {  // if image type
 
-          if (type === "image") {
+              for (var i = 0; i < response.data.length; i++) {  // iterate through respoonse data
 
-              for (var i = 0; i < response.data.length; i++) {
+                if (response.data[i].search("jpg") != -1) { // looking for jpg
 
-                if (response.data[i].search("orig.jpg") != -1) {
-
-                window.open(response.data[i]);
+                window.open(response.data[i]); // open in new tab
                 i = response.data.length;
               }
             }
           }
-          else if (type === "video") {
+          else if (type === "video") { // if video type
 
-              for (var i = 0; i < response.data.length; i++) {
+              for (var i = 0; i < response.data.length; i++) { // iterate through respoonse data
 
-                if (response.data[i].search("mp4") != -1) {
+                if (response.data[i].search("mp4") != -1) { // looking for mp4
 
-                  window.open(response.data[i]);
+                  window.open(response.data[i]); // open in new tab
                   i = response.data.length;
               }
             }
           }
-          else if (type === "audio") {
+          else if (type === "audio") { // if audio type
 
-            for (var i = 0; i < response.data.length; i++) {
+            for (var i = 0; i < response.data.length; i++) { // iterate through respoonse data
 
-                  if (response.data[i].contains("orig.wav")) {
+                  if (response.data[i].contains("wav")) { // looking for mp4
 
-                  window.open(response.data[i]);
+                  window.open(response.data[i]); // open in new tab
                   i = response.data.length;
                 }
               }

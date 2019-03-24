@@ -10,65 +10,14 @@
     <link rel="stylesheet" href="style.css">         <!--  My CSS sheet -->
     <link rel="stylesheet" href="assets/nasawds-2.0.7/css/nasawds.min.css">   <!-- NASA Web Design System -->
   </head>
-  <body ng-app="directoryApp" ng-controller="ListingsController">
 
-<!--       <div id="topBar">
-
-        
-          <div class="usa-grid">
-            <div class="usa-width-one-half | search">
-              <div role="search">
-                <form class="usa-search usa-search-big">
-                  <input id="search-field-big" type="search" name="search" ng-model="query">
-                  <button type="submit" ng-click="search()">
-                    <span class="usa-search-submit-text">Search</span>
-                  </button>
-                </form>
-              </div>
-            </div>
-
-            <div class="usa-width-one-half">
-
-              <em class="usa-logo-text" align="right">
-              <p class="title"> NASA Image Library </p>
-              <a href="./index.html" title="Home" aria-label="Home">
-                <img src="nasa.png" class="logo"/>
-              </a>
-            </em>
-
-             </div>
-          </div>
-
-          </div> -->
-
-
-
-
-
-
-            <!--   <span> 
-                <img src="nasa.png" align="right" class="logo"/> <p align="right" class="title"> NASA Image Directory </p>
-              </span> -->
-           
-
-          <!-- <div class="usa-logo" id="basic-logo">
-            <em class="usa-logo-text">
-              <a href="javascript:void(0)"
-                title="Home"
-                aria-label="Home">
-                Department of Web Design
-              </a>
-            </em>
-          </div> -->
-
-          
-
+  <body ng-app="directoryApp" ng-controller="ListingsController">  <!-- Uses listingController.js -->
       
-      <header class="usa-header usa-header-basic topBar noGreyBar" role="banner">
+      <header class="usa-header usa-header-basic topBar noGreyBar" role="banner">  <!-- Title BAR -->
             <div class="usa-nav-container">
               <div class="usa-navbar">
 
-            <div class="usa-logo" id="basic-logo">
+            <div class="usa-logo" id="basic-logo"> <!-- 'Home' Button -->
               <em class="usa-logo-text">
                 <a href="https://nasa-images-search.herokuapp.com/"
                   title="Home"
@@ -80,15 +29,15 @@
             <button class="usa-menu-btn">Search</button>
           </div>
 
-          <nav role="navigation" class="usa-nav" style="background-color: #323a45">
+          <nav role="navigation" class="usa-nav" style="background-color: #323a45"> <!-- Navigation Menu -->
 
-              <button class="usa-nav-close">
+              <button class="usa-nav-close"> <!-- Close Button -->
                 <span style="color: red;" class="glyphicon glyphicon-remove"></span>
               </button>
 
               <ul class="usa-nav-primary usa-accordion"><li>
 
-                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-one">
+                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-one"> <!-- Filter by Date -->
                     <span><p class="title">Date</p></span>
                   </button>
 
@@ -101,7 +50,7 @@
                     </form>
                   </ul></li><li>
 
-                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-two">
+                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-two"> <!-- Filter by Media Type -->
                     <span><p class="title">Media</p></span>
                   </button>
 
@@ -127,7 +76,7 @@
 
                   </ul></li><li>
                     
-                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-three">
+                  <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-three"> <!-- Filter by Location -->
                     <span><p class="title">Location</p></span>
                   </button>
                   
@@ -140,9 +89,9 @@
 
                             </ul></li><li></li></ul>
 
-                  <a data-toggle="modal" data-target="#historyPopup" style="cursor: pointer; text-decoration: none;"> History </a>
+                  <a data-toggle="modal" data-target="#historyPopup" style="cursor: pointer; text-decoration: none;"> History </a> <!-- Search History Button! -->
 
-              <form class="usa-search usa-search-small" style="padding-top: 15px">
+              <form class="usa-search usa-search-small" style="padding-top: 15px"> <!-- Search Button -->
                <div role="search">
                   <form class="usa-search usa-search-small row">
                     <input id="search-field-big" type="search" name="search" ng-model="query" placeholder="Search">
@@ -152,81 +101,6 @@
                   </form>
                 </div> 
               </form>
-
-
-
-
-<!-- 
-            <button class="usa-nav-close">
-              <img src="/nasawds-site/assets/img/close.svg" alt="close">
-            </button>
-
-            <span>Filter By</span>
-              <ul class="usa-nav-primary usa-accordion"><li>
-
-                <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-one">
-                  <span>Date</span>
-                </button>
-
-                <ul id="basic-nav-section-one" class="usa-nav-submenu"><li>
-
-                  <form action="/action_page.php">
-                    Start Year:
-                    <input type="number" min="1920" max="2099" step="1" value="2019" ng-model="startDate"/>
-                    End Year:
-                    <input type="number" min="1920" max="2099" step="1" value="2019" ng-model="endDate"/>
-                  </form>
-                </li></ul></li>
-
-                <li><button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-two">
-
-                  <span>Media Type</span>
-                </button>
-                <ul id="basic-nav-section-two" class="usa-nav-submenu"><li>
-                        <fieldset class="usa-fieldset-inputs usa-sans">
-                          <legend class="usa-sr-only">Media Type</legend>
-                          <ul class="usa-unstyled-list">
-                            <li>
-                              <input id="images" type="checkbox" name="mediaType" value="image" checked ng-model="isImage">
-                              <label for="images">Images</label>
-                            </li>
-                            <li>
-                              <input id="videos" type="checkbox" name="mediaType" value="video" checked ng-model="isVideo">
-                              <label for="videos">Videos</label>
-                            </li>
-                            <li>
-                              <input id="audio" type="checkbox" name="mediaType" value="audio" checked ng-model="isAudio">
-                              <label for="audio">Audio</label>
-                            </li>
-                          </ul>
-                        </fieldset>
-                        </li></ul></li><li>
-
-                <ul class="usa-nav-primary usa-accordion"><li>
-
-                <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="basic-nav-section-three">
-                  <span>Location</span>
-                </button>
-                <ul id="basic-nav-section-three" class="usa-nav-submenu"><li>
-
-                  <form>
-                    <label for="input-type-text"><p class="filter">Location</p></label>
-                    <input id="input-type-text" name="input-type-text" type="text" ng-model="location">
-                  </form>
-
-                </li></ul></li>
-
-                <div role="search">
-                  <form class="usa-search usa-search-big">
-                    <input id="search-field-big" type="search" name="search" ng-model="query">
-                    <button type="submit" ng-click="search()">
-                      <span class="usa-search-submit-text">Search</span>
-                    </button>
-                  </form>
-                </div> 
-
- -->
-             
                 
               </nav>
             </div>
@@ -236,7 +110,8 @@
 
       <br>
 
-      <div class="modal fade in" id="historyPopup" tabindex="-1" role="dialog" aria-labelledby="historyModalLabel" aria-hidden="true">
+      <!-- Modal for Search History (the popup with what you looked up) -->
+      <div class="modal fade in" id="historyPopup" tabindex="-1" role="dialog" aria-labelledby="historyModalLabel" aria-hidden="true"> 
           <div class="modal-dialog">
               <div class="modal-content">
                   <div class="modal-header">
@@ -244,26 +119,26 @@
                        <p id="historyModalLabel" class="modal-title popup">Search History</p>
 
                   </div>
-                  <div class="modal-body" ng-repeat="search in history">
+                  <div class="modal-body" ng-repeat="search in history"> <!-- Iterates through saved history -->
                     <p class="popup"><b>Search {{$index + 1}}: </b>{{search}}</p> 
                   </div>
 
                   <div class="modal-footer">
                       
-                      <span>
+                      <span> <!-- Clear Search History -->
                         <button type="button" style="background-color: #dd361c" class="btn btn-primary" ng-click="clearHistory()">Clear History</button>
                       </span>
 
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button> <!-- Dismiss Popup -->
 
                   </div>
               </div>
           </div>
       </div>
 
-      <div class="usa-grid">
+      <div class="usa-grid"> <!-- Page Navigation Buttons -->
 
-        <div class="usa-width-one-whole">
+        <div class="usa-width-one-whole"> 
           <div class="usa-width-one-third buttonRightLayout">
             <button style="margin-right: 0px;" class="usa-button-secondary-inverse" ng-click="getPrev()">Prev</button>
           </div>
@@ -274,25 +149,25 @@
         </div>
       </div>
 
-      <div class="usa-grid">
+      <div class="usa-grid"> <!-- The Main 'Beef' of the program, displays list of cards with image and title -->
 
         <div class="grid-container">
 
             <div class="grid">
               <div class="grid-sizer"></div>
-                <div ng-repeat="listing in listings">
+                <div ng-repeat="listing in listings"> <!-- Iterates though NASA search results -->
 
-                  <div class="card grid-item" data-toggle="modal" data-target="#dataPopup{{$index}}">
+                  <div class="card grid-item" data-toggle="modal" data-target="#dataPopup{{$index}}"> <!-- Triggers the Modal Popup for a given card (see below) -->
                    
-                      <img class="imgCard" src="{{listing.links[0].href}}" style="width:100%">
+                      <img class="imgCard" src="{{listing.links[0].href}}" style="width:100%"> <!-- A given card contains an image, title and ID -->
                       <div class="card-container">
                         <p class="ovf"><b>{{listing.data[0].title}}</b></p> 
                         <p class="ovf">{{listing.data[0].nasa_id}}</p>
                       </div>
                    
-                   
                   </div>
 
+                  <!-- The Modal with all the goodies!  This one contains all the metadata for a given card if it's corresponding card is clicked (see above) -->
                   <div class="modal fade in" id="dataPopup{{$index}}" tabindex="-1" role="dialog" aria-labelledby="dataModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                           <div class="modal-content">
@@ -301,6 +176,8 @@
                                    <p id="dataModalLabel" class="modal-title popup">{{listing.data[0].title}}</p>
 
                               </div>
+
+                              <!-- This is where all the metadata is accessed and displayed.  From Date to Location to ID to Photographer, it's here! -->
                               <div class="modal-body">
                                 <img src="{{listing.links[0].href}}" class="imgCurve">
                                 <p class="popup"><b>Date:         </b>{{listing.data[0].date_created}}</p> 
@@ -312,33 +189,38 @@
                                 <p class="popup"><b>Photographer: </b>{{listing.data[0].photographer}}</p> 
                                 <p class="popup"><b>Description:  </b>{{listing.data[0].description}}</p> 
                                 <p class="popup"><b>Keywords:     </b></p> 
-                                  <div ng-repeat="keyword in listing.data[0].keywords">
+                                  <div ng-repeat="keyword in listing.data[0].keywords"> <!-- A small little aside, here we iterate through the kewords (like hashtags) -->
                                       <span class="usa-label ">{{keyword}}</span>
                                   </div>
                               </div>
 
+                              <!-- Two footers -->
+
+                              <!-- First Footer has the share buttons, each with their own requirements/URL-type -->
                               <div class="modal-footer" align="right">
 
-                                  <span>
+                                  <span> <!-- Facebook, share a link -->
                                     <button type="button" class="btn btn-primary" ng-click="share('fb',listing.links[0].href,'','')" style="background-color: #3C5A99;">Share on Facebook</button>
                                   </span>
 
-                                  <span>
+                                  <span> <!-- Twitter, the interesting thing with this one is that we can convert the keywords into hashtags (see controller) -->
                                     <button type="button" class="btn btn-primary" ng-click="share('tw',listing.links[0].href,listing.data[0].title,listing.data[0].keywords)" style="background-color: #38A1F3;">Tweet this</button>
                                   </span>
 
-                                  <span>
+                                  <span> <!-- Email, send the title and the link -->
                                     <button type="button" class="btn btn-primary" ng-click="share('em',listing.links[0].href,listing.data[0].title,listing.data[0].keywords)" style="background-color: #4aa564;">Send as Email</button>
                                   </span>
 
                               </div>
 
+                              <!-- Second Footer lets you view the RAW data (jpg, mp4, etc), or dismiss the popup  -->
                               <div class="modal-footer">
                                   
-                                  <span>
+                                  <span> <!-- RAW -->
                                     <button type="button" class="btn btn-primary" ng-click="getFile(listing.data[0].media_type,listing.href)" style="background-color: #046b99">View Raw</button>
                                   </span>
                                   
+                                  <!-- Dismiss -->
                                   <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
                                   
                               </div>

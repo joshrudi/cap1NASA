@@ -2,6 +2,8 @@ angular.module('listings').factory('Listings', function($http) {
   var methods = {
     search: function(query, startDate, endDate, isImage, isVideo, isAudio, location) {
 
+    	// This function handles converting the search query and any filter inputs into a url which the NASA api is happy with
+
     	query = encodeURIComponent(query.trim());  // encode for URL
 
 		// below filter conditions makes no sense, assume user got confused
@@ -34,7 +36,7 @@ angular.module('listings').factory('Listings', function($http) {
     	return $http.get(search);
     },
 
-    getLink: function(link) {
+    getLink: function(link) {  // We pass in a link, and return the json.  Very simple, but works really well
     	return $http.get(link);
     }
   };

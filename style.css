@@ -1,10 +1,13 @@
 
 
+/* Includes CSS for the webpage to help it look good on multiple form factors (go mobile devs!) */
+
 
 
 
 /* ---- GENERAL ---- */
 
+/* mostly general purpose CSS used throughout the webpage */
 
 @media screen and (max-width:810px) {  
   img.logo {
@@ -84,6 +87,8 @@ html { overflow-y: scroll; }
 
 /* ---- TOP OF PAGE ---- */
 
+/* CSS used at the top of the page (think title bar, search, etc) */
+
 #searchBar {
   margin: 15px 10px;
 }
@@ -136,6 +141,7 @@ html { overflow-y: scroll; }
 
 /* ---- MIDDLE OF PAGE ---- */
 
+/* CSS used in the middle of the page (think the grid, cards in the grid, etc) */
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
@@ -154,30 +160,9 @@ html { overflow-y: scroll; }
   float: left;
 }
 
-/*.heart-container {
-  width: 20%;
-  height: 100%;
-  float: left;
-}*/
-
 .container {
   padding: 2px 16px;
 }
-/*
-.heart {
-  font-size: 35px;
-  padding-top: 75px;
-  color: #e59892;
-}
-
-@media only screen and (max-width: 640px) {
-
-  .heart {
-    font-size: 6vw;
-    padding-top: 17vw;
-    color: #e59892;
-  }
-}*/
 
 
 
@@ -189,18 +174,13 @@ html { overflow-y: scroll; }
 
 /* ---- GRID ---- */
 
-.grid {
+/* CSS used in the grid (think items and general sizing/layout) */
 
-}
 
 .grid:after {
   content: '';
   display: block;
   clear: both;
-}
-
-.grid-container {
-
 }
 
 .grid-sizer {
@@ -249,6 +229,8 @@ html { overflow-y: scroll; }
 
 
 /* ---- MODAL ---- */
+
+/* CSS for the Modals found on the site (think layout, elevation of the modal, etc) */
 
 .modal-content {
   background-color: #323a45;
